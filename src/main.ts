@@ -6,14 +6,12 @@ import { Response } from './common/response';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // 响应
   app.useGlobalInterceptors(new Response)
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     whitelist: true,
-  //     forbidNonWhitelisted: true,
-  //     transform: true,
-  //   }),
-  // );
+
+  // 内置验证
+  app.useGlobalPipes(new ValidationPipe());
+  
   await app.listen(3000);
 }
 bootstrap();
