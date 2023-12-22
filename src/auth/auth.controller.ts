@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard, Public } from './auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -14,12 +14,11 @@ export class AuthController {
         return res;
     }
 
-    @UseGuards(AuthGuard)
+    @Public()
     @Get()
     auth(@Request() req){
         return 123;
     }
-    // @UseGuards(AuthGuard)
     @Get('b')
     auth2(@Request() req){
         return 1234;
