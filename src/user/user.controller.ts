@@ -29,8 +29,14 @@ export class UserController {
   @ApiOperation({ summary: '获取单个用户',description: '获取单个用户param参数拼接在url后面'})
   findOne(@Param('id',ParseIntPipe) id: number) {
     console.log(id);
-    return this.userService.findOne(id);
+    return this.userService.findOne({id});
   }
+
+  // @Get('exist')
+  // existUser(@Body() params: object){
+  //   console.log(params);
+  //   return this.userService.findOne(params);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
