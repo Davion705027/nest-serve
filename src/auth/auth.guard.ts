@@ -16,8 +16,8 @@ import { Reflector } from '@nestjs/core';
   
     async canActivate(context: ExecutionContext): Promise<boolean> {
       const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY,[
-        context.getHandler(),
-        context.getClass()
+        context.getHandler(), // 当前请求
+        context.getClass() // 当前控制器
       ])  
       if(isPublic)return true;
 
