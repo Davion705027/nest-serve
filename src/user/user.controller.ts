@@ -4,12 +4,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { UserRole } from 'src/enum/userRole';
+import { Public } from 'src/auth/auth.guard';
 
 @Controller('user')
 @ApiTags('用户管理')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Post()
   @ApiOperation({ summary: '创建用户',description: '创建用户desc'})
   create(@Body() createUserDto: CreateUserDto) {

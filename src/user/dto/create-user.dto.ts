@@ -8,6 +8,12 @@ export class CreateUserDto {
     })
     name: string;
 
-    @IsString()
     email?: string;
+
+    @IsString({message:'密码要传'})
+    @ApiProperty({
+        description: '密码',
+    })
+    @IsString()
+    password: string;
 }

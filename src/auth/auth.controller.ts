@@ -8,6 +8,7 @@ export class AuthController {
 
     }
 
+    @Public()
     @Post()
     async login(@Body() params){
         const res = await this.authService.login(params);

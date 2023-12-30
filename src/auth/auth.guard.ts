@@ -43,8 +43,10 @@ import { Reflector } from '@nestjs/core';
     }
   
     private extractTokenFromHeader(request: Request): string | undefined {
-      const [type, token] = request.headers.authorization?.split(' ') ?? [];
-      return type === 'Bearer' ? token : undefined;
+      const token = request.headers.authorization;
+      return token ? token : undefined;
+      // const [type, token] = request.headers.authorization?.split(' ') ?? [];
+      // return type === 'Bearer' ? token : undefined;
     }
   }
 
