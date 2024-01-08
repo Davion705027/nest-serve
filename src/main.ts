@@ -18,7 +18,7 @@ async function bootstrap() {
 
   // swagger
   const swagger_config = new DocumentBuilder()
-    .setBasePath('/api')
+    .addServer('/api')
     .setTitle('Nestjs Project')
     .setDescription('Nestjs-api-doc')
     .setVersion('1.0')
